@@ -9,7 +9,8 @@ const {
   createPi,
   addPi,
   deletePi,
-  createIteration
+  createIteration,
+  deleteIteration
 } = require('../database/models/Cadence')
 
 const getPisProjectDetails = catchAsync(async (req, res) => {
@@ -98,11 +99,11 @@ const deletePisController = catchAsync(async (req, res) => {
 
 const createIterationByPi = catchAsync(async (req, res) => {
   const data = await createIteration(
-    req.body.pi_id,
+    req.body.pis,
     req.body.project_id,
     req.body.iteration_number,
-    req.body.startDate,
-    req.body.endDate
+    new Date(req.body.startDate),
+    new Date(req.body.endDate)
   )
   if (data) {
     res.status(200).json({
@@ -111,16 +112,38 @@ const createIterationByPi = catchAsync(async (req, res) => {
     })
   } else {
     res.status(200).json({
-      message: 'failed to add iteration',
+      message: 'no iteration',
       data: ''
     })
   }
 })
+
+const deleteIterationByPi = catchAsync(async (req, res) => {
+  const data = await deleteIteration(
+    req.body.iterations,
+    req.body.project_id,
+    req.body.pi_id,
+    req.body.iteration_input
+  )
+  if (data) {
+    res.status(200).json({
+      message: 'iteration added successfully!',
+      data: data
+    })
+  } else {
+    res.status(200).json({
+      message: 'no iteration',
+      data: ''
+    })
+  }
+})
+
 module.exports = {
   getPisProjectDetails,
   getiterationsPiController,
   createPiDetails,
   addPiData,
   deletePisController,
-  createIterationByPi
+  createIterationByPi,
+  deleteIterationByPi
 }

@@ -254,6 +254,18 @@ router.post(
   cadenceController.getiterationsPiController
 )
 router.post(
+  '/createIteationByPi',
+  verifyToken,
+  authorizeMiddleware(['scrum_master', 'project_manager', 'resource_manager']),
+  cadenceController.createIterationByPi
+)
+router.post(
+  '/createIteationByPi',
+  verifyToken,
+  authorizeMiddleware(['scrum_master', 'project_manager', 'resource_manager']),
+  cadenceController.createIterationByPi
+)
+router.post(
   '/addPi',
   verifyToken,
   authorizeMiddleware(['scrum_master', 'project_manager', 'resource_manager']),
@@ -264,6 +276,12 @@ router.post(
   verifyToken,
   authorizeMiddleware(['scrum_master', 'project_manager', 'resource_manager']),
   cadenceController.deletePisController
+)
+router.post(
+  '/deleteIterationByPI',
+  verifyToken,
+  authorizeMiddleware(['scrum_master', 'project_manager', 'resource_manager']),
+  cadenceController.deleteIterationByPi
 )
 router.put(
   '/editIteration/:id',
