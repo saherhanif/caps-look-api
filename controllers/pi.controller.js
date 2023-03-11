@@ -83,24 +83,9 @@ const getPisController = catchAsync(async (req, res) => {
   }
 })
 
-const getPisProjectDetails = catchAsync(async (req, res) => {
-  const data = await getPisProject(req.body.project_id)
-  if (data) {
-    res.status(200).json({
-      message: 'Pis project retrieved successfully!',
-      data: data
-    })
-  } else {
-    res.status(200).json({
-      message: 'no Pis project found',
-      data: ''
-    })
-  }
-})
 module.exports = {
   getPisController,
   editPiDetails,
   archivePisController,
-  createPiDetails,
-  getPisProjectDetails
+  createPiDetails
 }

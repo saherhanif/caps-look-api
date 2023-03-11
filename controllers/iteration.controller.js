@@ -93,25 +93,10 @@ const getIterationsController = catchAsync(async (req, res) => {
     })
   }
 })
-const getiterationsPiController = catchAsync(async (req, res) => {
-  const data = await getIterationspi(req.body.pi_id)
-  if (data) {
-    res.status(200).json({
-      message: 'Iterationspi retrieved successfully!',
-      data: data
-    })
-  } else {
-    res.status(200).json({
-      message: 'no Iterationspi found',
-      data: ''
-    })
-  }
-})
 
 module.exports = {
   getIterationsController,
   editIterationDetails,
   archiveIterationsController,
-  creatIterationDetails,
-  getiterationsPiController
+  creatIterationDetails
 }
