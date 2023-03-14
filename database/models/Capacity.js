@@ -84,10 +84,11 @@ const getEmployeeAbsences = async (id) => {
     [id]
   )
   const response = {
+    employee_id: id,
     employee_absence: employee_absence.rows,
     absences: absences.rows
   }
-  console.log(response)
+  console.log('absences',response)
   return response
 }
 
