@@ -20,17 +20,10 @@ const getPis = async () => {
   const piTable = await db.query(`SELECT * FROM pi`)
   return piTable.rows
 }
-const getPisProject = async (project_id) => {
-  const PisProjectTable = await db.query(
-    `SELECT * FROM pi WHERE project_id=($1) AND isarchived=false`,
-    [project_id]
-  )
-  return PisProjectTable.rows
-}
+
 module.exports = {
   createPi,
   editPi,
   archivePi,
-  getPis,
-  getPisProject
+  getPis
 }

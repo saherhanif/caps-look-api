@@ -12,16 +12,12 @@ const {
 
 const createMilestoneDetails = catchAsync(async (req, res) => {
   const data = await createMilestone(
-    req.body.milestone_name,
-    req.body.milestone_start_date,
-    req.body.milestone_end_date,
+    req.body.mileStoneName,
+    req.body.StartDate,
+    req.body.EndDate,
     req.body.project_id,
     req.body.description
   )
-  logger.info(
-    `the Milestone name ${req.body.Milestone_name},${req.body.project_id},  created successfully`
-  )
-
   if (data) {
     res.status(200).json({
       message: 'the Milestone created successfully',
@@ -38,16 +34,13 @@ const createMilestoneDetails = catchAsync(async (req, res) => {
 const editMilestoneDetails = catchAsync(async (req, res) => {
   const data = await editMilestone(
     req.params.id,
-    req.body.milestone_name,
-    req.body.milestone_start_date,
-    req.body.milestone_end_date,
+    req.body.mileStoneName,
+    req.body.StartDate,
+    req.body.EndDate,
     req.body.project_id,
     req.body.description
   )
-  logger.info(
-    `the data ${req.body.Milestone_name},${req.body.project_id},${req.body.id},  edited successfully`
-  )
-
+ 
   if (data) {
     res.status(200).json({
       message: 'the Milestone edited successfully',

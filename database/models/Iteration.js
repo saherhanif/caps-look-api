@@ -56,13 +56,6 @@ const getIterations = async () => {
   const iterationTable = await db.query(`SELECT * FROM iteration`)
   return iterationTable.rows
 }
-const getIterationspi = async (pi_id) => {
-  const iterationPiTable = await db.query(
-    `SELECT * FROM iteration WHERE project_id=($1) AND isarchived=false`,
-    [pi_id]
-  )
-  return iterationPiTable.rows
-}
 
 const getProjectPis = async (id) => {
   const iterationPiTable = await db.query(
@@ -77,7 +70,6 @@ module.exports = {
   editIteration,
   archiveIteration,
   getIterations,
-  getIterationspi,
   getIterations,
   getProjectPis
 }

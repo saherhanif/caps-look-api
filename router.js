@@ -7,6 +7,7 @@ const loginController = require('./controllers/login.controller')
 const scrumsController = require('./controllers/scrums.controller')
 const applicationController = require('./controllers/application.controller')
 const capacityController = require('./controllers/capacity.controller')
+const cadenceController = require('./controllers/cadence.controller')
 const authorizeMiddleware = require('./middleware/authorization')
 const verifyToken = require('./middleware/verifyUser')
 const auth = require('./controllers/auth.controller')
@@ -219,7 +220,7 @@ router.post(
   '/pisProject',
   verifyToken,
   authorizeMiddleware(['scrum_master', 'project_manager', 'resource_manager']),
-  piController.getPisProjectDetails
+  cadenceController.getPisProjectDetails
 )
 router.put(
   '/editPi/:id',
@@ -231,7 +232,7 @@ router.post(
   '/createPi',
   verifyToken,
   authorizeMiddleware(['scrum_master', 'project_manager', 'resource_manager']),
-  piController.createPiDetails
+  cadenceController.createPiDetails
 )
 
 router.put(
@@ -250,7 +251,37 @@ router.post(
   '/iterationsPi',
   verifyToken,
   authorizeMiddleware(['scrum_master', 'project_manager', 'resource_manager']),
-  iterationController.getiterationsPiController
+  cadenceController.getiterationsPiController
+)
+router.post(
+  '/createIteationByPi',
+  verifyToken,
+  authorizeMiddleware(['scrum_master', 'project_manager', 'resource_manager']),
+  cadenceController.createIterationByPi
+)
+router.post(
+  '/createIteationByPi',
+  verifyToken,
+  authorizeMiddleware(['scrum_master', 'project_manager', 'resource_manager']),
+  cadenceController.createIterationByPi
+)
+router.post(
+  '/addPi',
+  verifyToken,
+  authorizeMiddleware(['scrum_master', 'project_manager', 'resource_manager']),
+  cadenceController.addPiData
+)
+router.post(
+  '/deletePi',
+  verifyToken,
+  authorizeMiddleware(['scrum_master', 'project_manager', 'resource_manager']),
+  cadenceController.deletePisController
+)
+router.post(
+  '/deleteIterationByPI',
+  verifyToken,
+  authorizeMiddleware(['scrum_master', 'project_manager', 'resource_manager']),
+  cadenceController.deleteIterationByPi
 )
 router.put(
   '/editIteration/:id',
